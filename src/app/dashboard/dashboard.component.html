@@ -1,0 +1,32 @@
+
+<h2 >Welcome {{user}} !</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">Add Your Events Here</div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form (ngSubmit)="createevent()" >
+                <input type="text" name="date"[(ngModel)]="edate"  id="id" placeholder="Enter date"><br>
+                
+                <input type="text" name="dateevent"[(ngModel)]="event" id="name" placeholder="Enter your event "><br>
+                <input type="submit" value="Add" class="btn btn-success">&nbsp;&nbsp;
+                <input type="submit" value="Display" class="btn btn-success">
+                
+                
+            
+              
+                
+                </form>
+            </div>
+
+            <div class="col-4"></div>
+            </div>
+            <div class="row">
+             <div class="col-4"></div>
+            <div class="col-4"> 
+                

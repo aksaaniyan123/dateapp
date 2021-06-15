@@ -1,0 +1,28 @@
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">Login </div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form (ngSubmit)="login()">
+                <input type="text"name="ids" id="id"[(ngModel)]="uid"  placeholder="User id"><br>
+                <input type="text" name="name" id="name"[(ngModel)]="uname" placeholder="Username"><br>
+                <input type="password"name="pd" id="pwd"[(ngModel)]="pswd" placeholder="Password"><br>
+                <input type="submit" value="log in" class="btn btn-success"><br>
+                <a class="textfp" href="#">Forgot Password</a><br>
+              
+                <input type="button" value="Create New Account" (click)="register()" class="btn btn-success"><br>
+                </form>
+            </div>
+
+            <div class="col-4"></div>
+            </div>
+            <div class="row">
+             <div class="col-4"></div>
+            <div class="col-4"> 
+                

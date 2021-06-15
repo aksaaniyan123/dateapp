@@ -1,1 +1,28 @@
-<p>register works!</p>
+
+     
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">Register form</div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form (ngSubmit)="register()">
+
+                <input type="text" name="useid"id="id"[(ngModel)]="uid"  placeholder="User id"><br>
+                <input type="text"name="usname" id="name"[(ngModel)]="uname" placeholder="Username"><br>
+                <input type="password"name="pwd" id="pwd"[(ngModel)]="pswd" placeholder="Password"><br>
+               
+                <input type="submit" value="Register here"  class="btn btn-success"><br>
+                <a routerLink="">Login</a>
+            </form>
+            </div>
+            <div class="col-4"></div>
+            </div>
+            <div class="row">
+             <div class="col-4"></div>
+            <div class="col-4"> 
+                
