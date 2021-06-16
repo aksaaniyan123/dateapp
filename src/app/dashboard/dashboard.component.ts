@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -9,25 +10,27 @@ import { DataService } from '../services/data.service';
 export class DashboardComponent implements OnInit {
   
 edate="";
-
-event="";
+eventdetl="";
 user=this.dataService.currentUser;
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService, private router :Router) { }
   
   ngOnInit(): void {
   }
 
-
-
   createevent()
   {
-  var date=this.edate;
+    
+  var edate=this.edate;
  
-  var event=this.event;
-  const result=this.dataService.createevent(date,event)
+  var eventdetl=this.eventdetl;
+  const result=this.dataService.createevent(edate,eventdetl)
   if (result){
-    alert("Event which named"  +  event  +  "on"  +  date  + "added to event list")
+    alert("Event which named"  +  eventdetl  +  "on"  +  edate  + "added to event list")
   }
   } 
+  displayall()
+  {
+    this.router.navigateByUrl("displayevents")
+  }
 }

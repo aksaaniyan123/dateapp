@@ -11,11 +11,15 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <form (ngSubmit)="createevent()" >
+                    
+                
+                   
                 <input type="text" name="date"[(ngModel)]="edate"  id="id" placeholder="Enter date"><br>
                 
-                <input type="text" name="dateevent"[(ngModel)]="event" id="name" placeholder="Enter your event "><br>
+                <input type="text" name="dateevent"[(ngModel)]="eventdetl" id="name" placeholder="Enter your event "><br>
                 <input type="submit" value="Add" class="btn btn-success">&nbsp;&nbsp;
-                <input type="submit" value="Display" class="btn btn-success">
+                <input type="submit" value="Display" (click)="displayall()" class="btn btn-success"><br>
+           
                 
                 
             

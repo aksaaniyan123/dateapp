@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   currentUser="";
+  currentUid="";
   details:any={
     
-    1000: { uid: 1000,  username: "userone", password: "userone" },
-    1001: { uid: 1001,  username: "usertwo", password: "usertwo" },
-    1002: {uid: 1002,  username: "userthree", password: "userthree" },
-    1003: { uid: 1003,  username: "userfour", password: "userfour" }
+    1000: { uid: 1000,  username: "userone", password: "userone" ,eventDetails:[]},
+    1001: { uid: 1001,  username: "usertwo", password: "usertwo" ,eventDetails:[]},
+    1002: {uid: 1002,  username: "userthree", password: "userthree",eventDetails:[] },
+    1003: { uid: 1003,  username: "userfour", password: "userfour",eventDetails:[] }
   
 
 }
   constructor() {
     this.getDetails();
+    
    }
   saveDetails(){
 localStorage.setItem("accountDetails",JSON.stringify(this.details));
 if(this.currentUser){
   localStorage.setItem("currentUser",JSON.stringify(this.currentUser));
+
+}
+if(this.currentUid){
+  localStorage.setItem("currentUid",JSON.stringify(this.currentUid));
 
 }
 
@@ -34,6 +41,9 @@ if(this.currentUser){
 
     if(localStorage.getItem("currentUser")){
       this.currentUser=JSON.parse(localStorage.getItem("currentUser")|| '')
+    }
+    if(localStorage.getItem("currentUid")){
+      this.currentUid=JSON.parse(localStorage.getItem("currentUid")|| '')
     }
     
   }
@@ -49,7 +59,8 @@ register(uid:any,uname:any,pswd:any){
   user[uid]={
     uid,
     username:uname,
-    password:pswd
+    password:pswd,
+    eventDetails:[]
   }
   this.saveDetails();
   return true;
@@ -63,6 +74,9 @@ login(uid:any,uname:any,pswd:any)
   if(uid in users){
     if(pswd== users[uid]["password"]){
 this.currentUser=users[uid]["username"]
+this.currentUid=uid;
+console.log(this.currentUid);
+
 this.saveDetails();
       return true;
      
@@ -77,21 +91,36 @@ this.saveDetails();
     return false;
   }
 }
-createevent(date:any,event:any)
+createevent(edate:any,eventdetl:any)
 {
+
+if(this.currentUid){
   let user=this.details;
-  if (date in user)
-  {
-    
+  console.log(user);
   
-    return user[date][event]
-  }
+  let uid=this.currentUid;
+  alert(uid)
+  user[uid].eventDetails.push({edate:edate,eventdetl:eventdetl})
   this.saveDetails();
-  
   return true;
-  
+}
+else{
+  return false;
 }
 
+}
+display()
+{
+  if (this.currentUid){
+    let users=this.details;
+    console.log(users);
+    
+    let uid=this.currentUid;
+    console.log(uid);
+    
+    return (users[uid].eventDetails)
+  }
+}
 }
 
 
